@@ -1,0 +1,158 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% LaTeX Example: Project Report
+%
+% Source: http://www.howtotex.com
+%
+% Feel free to distribute this example, but please keep the referral
+% to howtotex.com
+% Date: March 2011 
+% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% How to use writeLaTeX: 
+%
+% You edit the source code here on the left, and the preview on the
+% right shows you the result within a few seconds.
+%
+% Bookmark this page and share the URL with your co-authors. They can
+% edit at the same time!
+%
+% You can upload figures, bibliographies, custom classes and
+% styles using the files menu.
+%
+% If you're new to LaTeX, the wikibook is a great place to start:
+% http://en.wikibooks.org/wiki/LaTeX
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Edit the title below to update the display in My Documents
+%\title{343 Assignment 1}
+%
+%%% Preamble
+\documentclass[paper=a4, fontsize=11pt]{scrartcl}
+\usepackage[T1]{fontenc}
+\usepackage{fourier}
+
+\usepackage[english]{babel}															% English language/hyphenation
+\usepackage[protrusion=true,expansion=true]{microtype}	
+\usepackage{amsmath,amsfonts,amsthm} % Math packages
+\usepackage[pdftex]{graphicx}	
+\usepackage{url}
+\usepackage{ulem}
+
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+
+%%% Custom sectioning
+\usepackage{sectsty}
+\allsectionsfont{\centering \normalfont\scshape}
+
+
+%%% Custom headers/footers (fancyhdr package)
+\usepackage{fancyhdr}
+\pagestyle{fancyplain}
+\fancyhead{}											% No page header
+\fancyfoot[L]{}											% Empty 
+\fancyfoot[C]{}											% Empty
+\fancyfoot[R]{\thepage}									% Pagenumbering
+\renewcommand{\headrulewidth}{0pt}			% Remove header underlines
+\renewcommand{\footrulewidth}{0pt}				% Remove footer underlines
+\setlength{\headheight}{13.6pt}
+
+
+%%% Equation and float numbering
+\numberwithin{equation}{section}		% Equationnumbering: section.eq#
+\numberwithin{figure}{section}			% Figurenumbering: section.fig#
+\numberwithin{table}{section}				% Tablenumbering: section.tab#
+
+
+%%% Maketitle metadata
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}} 	% Horizontal rule
+
+\title{
+		%\vspace{-1in} 	
+		\usefont{OT1}{bch}{b}{n}
+		\normalfont \normalsize \textsc{School of Engineering and Technology} \\ [25pt]
+		\horrule{0.5pt} \\[0.4cm]
+		\huge TCSS 343 - Assignment 1\\
+		\horrule{2pt} \\[0.5cm]
+}
+\author{
+		\normalfont 								\normalsize
+        Version 1.0\\[-3pt]
+}
+
+
+%%% Begin document
+\begin{document}
+\maketitle
+
+\section{Guidelines}
+Homework should be electronically submitted to the instructor by midnight on the due date.  A submission link is provided on the course Canvas Page.  The submitted document should be typeset using any common software and submitted as a PDF.  We strongly recommend using \LaTeX\;  to prepare your solution.  You could use any \LaTeX\; tools such as Overleaf. Scans of handwritten/hand drawn solutions are acceptable, but your work may be considered incomplete if the handwriting is unclear or disorganized.
+
+You should attempt to present solutions that are correct (no errors or omissions), clear (stated in a precise and concise way), and have a well organized presentation.  Show your work as partial credit will be awarded to rough solutions or solutions that make partial progress toward a correct solution.
+
+\textbf{Remember to cite} all sources you use other than the text, course material or your notes.
+
+\newpage
+\section{Problems}
+\begin{enumerate}
+\item You, Alice and Bob are engineering a solution the Really Hard Problem and have come up with ten algorithmic solutions. Alice has analysed the code and expressed the run times of the ten solutions with the following ten functions:
+
+\begin{itemize}
+    \item $f_0(n) = (3n + 3)^3$ 
+    \item $f_1(n) = \sum_{i=1}^n2^i$  
+    \item $f_2(n) = n^2\cdot(22\frac{n}{\log_2n} + 75)$ 
+    \item $f_3(n) = 3^{\log_2n}$
+    \item $f_4(n) = (4n^2+25)\cdot(n^2-2n+1)$
+    \item $f_5(n) = \log_2\left(n^{n^3}\right)$
+    \item $f_6(n) = \log_2\left(n^2 + 5n - 3\right)$
+    \item $f_7(n) = \log_2\left(\log_2n + 3\right)$
+    \item $f_8(n) = 2^{\frac{n}{2}}$
+    \item $f_9(n) = 2^{2^{2^2}}$
+\end{itemize}
+
+\begin{enumerate}
+    \item Alice has asked you to help her classify these functions based on their asymptotic growth rate. That is, she wants you to prove a tight big-Theta bound for each function by following these steps.
+    \begin{enumerate}
+        \item Use algebra to simply the function for ease of analysis. Remember the goal of simplification is to isolate terms and identify the dominant term. For instance, we might want to expand $(n+1)^2$ to $n^2 +2n +1$ to see that $n^2$ is the dominant term.
+        
+        \item Use your intuition, the limit test, or algebra to come up with a good guess of a tight bound. For instance, after isolating $n^2$ as the dominant term we might guess our polynomial is in $\Theta(n^2)$.
+        
+        \item Use the limit test or the definitions to prove that your guess is correct. Both methods can provide correct proofs, and its a good idea to practice both methods. Sometimes our guess is incorrect and we need to return to the previous step.
+        
+        % Here is my solution
+        
+         $f_0(n) = (3n + 3)^3 <= (4n)^3$ We can set the upperbound for $f_0(n)$ to be $(4n)^3$ 
+    \end{enumerate}
+    
+\item Now Alice asks you to place the functions in order of asymptotic growth from the slowest growing to the fastest growing. (Remember an algorithm with a \textit{fast} growing run time function is a \textit{slow} algorithm and vice versa. It is easy to confuse these when classifying functions.) You do not need to provide proofs in this step, but you may want to use the limit test or algebra to compare your functions.
+\item Bob has determined that for the instances of the Really Hard Problem that you want to solve the input size is guaranteed to be at most $n = 65536$. Place the functions from smallest to largest when evaluated at this maximum input size. 
+\end{enumerate}
+
+\item You, Alice and Bob have been working on tight bounds on common summations expressing the run time of loops. 
+
+\begin{enumerate}
+\item Alice has noticed that there is a pattern appearing in some of the summations she has been working on:
+\begin{itemize}
+\item $\sum_{i=1}^{n}i \in \Theta\left(n^2\right)$
+\item $\sum_{i=1}^{n}i^2 \in \Theta\left(n^3\right)$
+\item $\sum_{i=1}^{n}i^{\frac{1}{2}} \in \Theta\left(n^{\frac{3}{2}}\right)$
+\end{itemize}
+
+Help her by stating a good guess for a Theta bound on this summation for any $d>0$.
+\[
+\sum_{i=1}^ni^d
+\]
+\item Bob wants make sure the guess is correct before he uses it. Prove to Bob that your bound is correct using either the binding the term and splitting the sum technique or the approximation by integration technique. Whichever method you choose make sure to show all of your steps.
+\end{enumerate}
+
+\newpage
+\section{Extra Credit Problem}
+\item Consider a list $A$ with $n$ unique elements.  Alice takes all permutations of the list $A$ and stores them in a completely balanced binary search tree.  Using asymptotic notation (big-Oh notation) state the depth of this tree as simplified as possible.  Show your work.
+
+\end{enumerate}
+
+
+%%% End document
+
+\end{document}
